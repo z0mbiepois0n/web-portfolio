@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Prettier
-        run: npm install --no-save --no-package-lock prettier
+      - name: Check HTML formatting
+        run: npx prettier --check --parser html -- '**/*.html'
 
       - name: Format HTML
         run: npx prettier --write --parser html -- '**/*.html'
