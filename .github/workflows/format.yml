@@ -1,11 +1,17 @@
 name: Auto Format HTML
-on: [push]
+
+on:
+  push:
+
+permissions:
+  contents: write
 
 jobs:
   format:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout 
+      - name: Checkout
         uses: actions/checkout@v4.4.0
 
       - name: Setup Node.js
@@ -13,10 +19,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Run Prettier Formatter
-        run: npx prettier --write "**/*.html"
+      - name: Install Prettier
+        run: npm install --no-save --no-package-lock prettier
 
-      - name: Auto Commit Fixed Indents
+      - name: Format HTML
+        run: npx prettier --write --parser html -- '**/*.html'
+
+      - name: Commit formatting changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Apply automatic HTML formatting fixes"
