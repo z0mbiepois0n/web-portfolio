@@ -1,0 +1,22 @@
+name: Auto Format HTML
+on: [push]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v4.4.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6.4.0
+        with:
+          node-version: '20'
+
+      - name: Run Prettier Formatter
+        run: npx prettier --write "**/*.html"
+
+      - name: Auto Commit Fixed Indents
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Apply automatic HTML formatting fixes"
