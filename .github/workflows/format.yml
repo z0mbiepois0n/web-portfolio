@@ -17,13 +17,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6.4.0
         with:
-          node-version: '20'
-
-      - name: Check HTML formatting
-        run: npx prettier --check --parser html -- '**/*.html'
+          node-version: "20"
 
       - name: Format HTML
-        run: npx prettier --write --parser html -- '**/*.html'
+        run: npx prettier@3 --write --parser html -- '**/*.html'
+
+      - name: Verify HTML formatting
+        run: npx prettier@3 --check --parser html -- '**/*.html'
 
       - name: Commit formatting changes
         uses: stefanzweifel/git-auto-commit-action@v5
