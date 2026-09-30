@@ -79,6 +79,13 @@
         background-color: #f1f1f1;
       }
 
+      /* Active link styling */
+      .dropdown-content a.active {
+        background-color: #2e7d32;
+        color: white;
+        font-weight: bold;
+      }
+
       /* Show the dropdown content while hovering over the button or menu */
       .dropbtn:hover + .dropdown-content,
       .dropdown-content:hover {
@@ -128,11 +135,6 @@
         .container {
           flex-direction: column;
         }
-      }
-      @media screen and (max-width: 700px) {
-        .container {
-          flex-direction: column;
-        }
 
         .side {
           display: none;
@@ -151,10 +153,9 @@
     <div class="dropdown">
       <button class="dropbtn">Dropdown Menu</button>
       <div class="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
+        <a href="home.html" class="active">Link 1 - Home</a>
+        <a href="about.html">Link 2 - About Me</a>
         <a href="#">Link 3</a>
-        <a href="about">About Me</a>
       </div>
     </div>
 
