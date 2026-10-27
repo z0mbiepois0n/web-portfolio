@@ -1,4 +1,5 @@
 import random
+
 # values of cards in blackjack
 def hand_total(hand):
     total = 0
@@ -16,10 +17,11 @@ def hand_total(hand):
         total -= 10
         aces -= 1
     return total
+
 print("\n \n \n<+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+> \n \n \n")
-player_name = await input("Welcome to Blackjack! What is your name? ")
-start_game = await input(f"\nHello {player_name}, do you want to play a game of Blackjack? (y/n): ")
-while start_game.lower() == 'y':
+player_name = input("Welcome to Blackjack! What is your name? ").strip()
+start_game = input(f"\nHello {player_name}, do you want to play a game of Blackjack? (y/n): ").strip().lower()
+while start_game == 'y':
     print("\nLet's start!\n")
     suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
     ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -33,8 +35,7 @@ while start_game.lower() == 'y':
     print(f"\n{player_name}'s hand: {player_hand}")
     print(f"{player_name}'s total: {hand_total(player_hand)}")
 
-    hit_or_stand = await input("\nDo you want to hit or stand? (h/s): ")
-    hit_or_stand = hit_or_stand.lower()
+    hit_or_stand = input("\nDo you want to hit or stand? (h/s): ").strip().lower()
     while hit_or_stand == 'h':
         player_hand.append(deck.pop())
         print(f"\n{player_name}'s hand: {player_hand}")
@@ -44,7 +45,7 @@ while start_game.lower() == 'y':
             print(f"Dealer's hand: {dealer_hand}")
             print(f"Dealer's total: {hand_total(dealer_hand)}")
             break
-        hit_or_stand = (await input("\nDo you want to hit or stand? (h/s): ")).lower()
+        hit_or_stand = input("\nDo you want to hit or stand? (h/s): ").strip().lower()
 
     if hand_total(player_hand) <= 21:
         print(f"\nDealer's hand: {dealer_hand}")
@@ -61,8 +62,8 @@ while start_game.lower() == 'y':
         elif hand_total(dealer_hand) < hand_total(player_hand):
             print(f"{player_name} wins.")
         else:
-            print("It's a tie. Dealer wins.") # house always wins in a tie
+            print("It's a tie. Dealer wins.")  # house always wins in a tie
 
-    start_game = await input("\nPlay again? (y/n): ")
+    start_game = input("\nPlay again? (y/n): ").strip().lower()
 
 print("\nThanks for playing!")
