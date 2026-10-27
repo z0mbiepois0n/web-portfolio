@@ -1,6 +1,5 @@
 import random
 
-# values of cards in blackjack
 def hand_total(hand):
     total = 0
     aces = 0
@@ -19,8 +18,10 @@ def hand_total(hand):
     return total
 
 print("\n \n \n<+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+><+> \n \n \n")
+
 player_name = input("Welcome to Blackjack! What is your name? ").strip()
 start_game = input(f"\nHello {player_name}, do you want to play a game of Blackjack? (y/n): ").strip().lower()
+
 while start_game == 'y':
     print("\nLet's start!\n")
     suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
